@@ -91,3 +91,58 @@ function jpn (manga, chapter, year) {
     console.log(newObj);
     */
 //Task 7 - ?
+/*
+function char(name, race, clas ){
+
+  this.name = name,
+  this.race = race,
+  this.clas = clas
+}
+
+let Eizeek = new char("Eizeek","High-Elf", "Hunter" )
+console.log(Eizeek)
+
+
+function charBuilder(strenght, agility, dextery, stamina, intellect, wisdom ){
+
+this.strenght = str,
+this.agility = agi,
+this.dextery = dex,
+this.stamina = sta,
+this.intellect = int,
+this.wisdom = wis 
+}
+*/
+
+
+class Char{
+
+  constructor(name, race, clas, level){
+this.name = name,
+this.race = race,
+this.clas = clas,
+this.level = level
+  }
+
+  }
+
+class charParam extends Char {
+
+  
+  constructor(name, race, clas, level, str, agi, dex, sta, int, wis ){
+    super(name, race, clas, level);
+    this.strenght = str,
+    this.agility = agi,
+    this.dextery = dex,
+    this.stamina = sta,
+    this.intellect = int,
+    this.wisdom = wis
+}
+
+}
+let charName = prompt('Dungeon awaits you!!!!  Enter your Character Name : ')
+let charRace = prompt('Choose your race : Human ; Elf ; High-Elf ; Orc ; Dwarf ; Goblin')
+let charClass = prompt('Choose your class : Warrior ; Hunter ; Paladin ; Mage ; Necromancer ; Bard')
+
+let login = new charParam(charName,charRace, charClass, 1, 15, 30, 10, 5, 1, 1 )
+console.log(login)
