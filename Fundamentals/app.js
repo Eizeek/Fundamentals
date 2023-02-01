@@ -115,6 +115,10 @@ this.wisdom = wis
 */
 
 
+
+
+// Class JS
+/*
 class Char{
 
   constructor(name, race, clas, level){
@@ -146,3 +150,38 @@ let charClass = prompt('Choose your class : Warrior ; Hunter ; Paladin ; Mage ; 
 
 let login = new charParam(charName,charRace, charClass, 1, 15, 30, 10, 5, 1, 1 )
 console.log(login)
+*/
+
+
+let input = document.getElementById('input');
+let btn = document.getElementById("btn");
+let lists = document.getElementById('list-box');
+
+if (JSON.parse(localStorage.getItem('list')) === null) {
+  localStorage.setItem("list", JSON.stringify([]));
+}
+
+btn.addEventListener("click", () => {
+  let getList = JSON.parse(localStorage.getItem('list'));
+  let newObj = { id: Math.random(), data: input.value };
+  localStorage.setItem('list', JSON.stringify([...getList, newObj]));
+
+  let listArr = JSON.parse(localStorage.getItem("list"));
+  lists.innerHTML = '';
+
+  listArr.reverse().forEach(e => {
+    let listElement = document.createElement("li");
+    listElement.textContent = e.data;
+    let icon = document.createElement("i");
+    icon.className = 'fa-solid fa-xmark';
+    listElement.append(icon);
+
+    icon.addEventListener("click", () => {
+      let filteredData = listArr.filter(item => item.id !== e.id);
+      localStorage.setItem("list", JSON.stringify(filteredData));
+      lists.removeChild(listElement);
+    });
+
+    lists.append(listElement);
+  });
+});
